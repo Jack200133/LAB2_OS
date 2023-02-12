@@ -13,26 +13,26 @@ int main()
     start = clock();
     pid1 = fork();
 
-    if (pid1 = 0)
+    if (pid1 == 0)
     {
         pid2 = fork();
 
-        if (pid2 = 0)
+        if (pid2 == 0)
         {
             pid3 = fork();
 
-            if (pid3 = 0)
+            if (pid3 == 0)
             {
                 for (int i = 0; i < 1000000; i++)
                 {
-                    /* * no hace nada * */
+                    printf("id: %d, pid: %d ", i, getpid());
                 }
             }
             else
             {
                 for (int j = 0; j < 1000000; j++)
                 {
-                    /* * no hace nada * */
+                    printf("id: %d, pid: %d ", j, getpid());
                 }
                 wait(NULL);
             }
@@ -41,7 +41,7 @@ int main()
         {
             for (int k = 0; k < 1000000; k++)
             {
-                /* * no hace nada * */
+                printf("id: %d, pid: %d ", k, getpid());
             }
             wait(NULL);
         }
@@ -53,4 +53,5 @@ int main()
         time = (double)(end - start) / CLOCKS_PER_SEC;
         printf("Tiempo de ejecucion: %f\n", time);
     }
+    return 0;
 }

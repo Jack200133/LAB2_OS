@@ -9,15 +9,16 @@ int main()
 
     for (int i = 0; i < 1000000; i++)
     {
-        /* * no hace nada * */
+        printf("id: %d", i);
     }
     for (int j = 0; j < 1000000; j++)
     {
-        /* * no hace nada * */
+
+        printf("id: %d", j);
     }
     for (int k = 0; k < 1000000; k++)
     {
-        /* * no hace nada * */
+        printf("id: %d", k);
     }
 
     end = clock();
