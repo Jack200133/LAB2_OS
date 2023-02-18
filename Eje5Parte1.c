@@ -27,12 +27,25 @@ int main(int argc, char **argv)
     char arr1[80];
 
     shm_d = shm_open(key, O_CREAT | O_RDWR, S_IRUSR | S_IWUSR);
+
+    if (shm_d == -1)
+    {
+        printf("Error al crear el segmento de memoria compartida\n");
+        exit(1);
+    }
+
     int nbytes;
     int fd[2];
     pipe(fd);
     int p[2];
     pipe(p);
-    ftruncate(shm_d, size);
+    int esto = ftruncate(shm_d, size);
+
+    if (esto == -1)
+    {
+        printf("Error al truncar el segmento de memoria compartida\n");
+        exit(1);
+    }
 
     char *ptr = (char *)mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, shm_d, 0);
     int pid = fork();
